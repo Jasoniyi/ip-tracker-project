@@ -1,23 +1,58 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Header from './components/Header'
+import IpDisplay from './components/IpDisplay';
+import Map from './components/Map'
+import axios from 'axios'
+import leaflet from 'leaflet'
 
-function App() {
+
+const App = () => {
+  const [data, setData] = useState({});
+
+  const DEFAULT_URL = 'https://geo.ipify.org/api/v2/country,city'
+  const MY_APIKEY = 'at_LrnFuYIMEWnCWRTQI5g8MzyfLNAL9'
+
+  const getIpAddress = (address) => {
+    console.log('passed params',address)
+    const getData = async () => {
+      try {
+        const data = await axios.get(`${DEFAULT_URL}?apiKey=${MY_APIKEY}&ipAddress=${address}`)
+        const result = data.data
+        // console.log('res2', result)
+        console.log('lat', result)
+        setData(result)
+      } catch (err) {
+        return err.message
+      }
+    }
+    getData()
+  }
+
+  useEffect(() => {
+    const getIpDetails = async () => {
+      try {
+        const data = await axios.get(`${DEFAULT_URL}?apiKey=${MY_APIKEY}`)
+        const result = data.data
+        setData(result)
+        // console.log(result) 
+        // const ipInfo = {
+        //   region: result.location.region
+        // }
+      } catch (err) {
+        return err.message
+      }
+    }
+    getIpDetails()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header getAddress={getIpAddress} />
+      <div className="relative">
+        <IpDisplay data={data} />
+        <Map data={data} />
+      </div>
     </div>
   );
 }
