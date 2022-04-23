@@ -4,7 +4,6 @@ import Header from './components/Header'
 import IpDisplay from './components/IpDisplay';
 import Map from './components/Map'
 import axios from 'axios'
-import leaflet from 'leaflet'
 
 
 const App = () => {
