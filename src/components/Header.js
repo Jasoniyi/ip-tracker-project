@@ -7,7 +7,6 @@ const Header = ({ getAddress }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log(ipAddress)
     setIpAddress(ipAddress)
     getAddress(ipAddress)
     setIpAddress('');
@@ -21,7 +20,7 @@ const Header = ({ getAddress }) => {
                 <input
                 type='text'
                 placeholder='Search for any IP address or domain'
-                className="md:w-96 w-60 text-base"
+                className="md:w-96 w-80 text-base"
                 value={ipAddress}
                 onChange={(e) => setIpAddress(e.target.value)}
                 />

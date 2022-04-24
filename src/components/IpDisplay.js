@@ -18,17 +18,14 @@ const IpDisplay = ({ data  }) => {
             </div>
             <div className="flex flex-col items-center md:items-start md:border-r-2 md:border-r-zinc-200 md:px-6 md:w-64">
                 <span className="text-base text-gray-400">location</span>
-                {/* <span className="text-2xl">{data.location.region}</span> */}
                 <span className="text-2xl">{getRegion}</span>
             </div>
             <div className="flex flex-col items-center md:items-start md:border-r-2 md:border-r-zinc-200 md:px-6 md:w-64">
                 <span className="text-base text-gray-400">Timezone</span>
-                {/* <span className="text-2xl tracking-normal">UTC  {data.location.timezone}</span> */}
                 <span className="text-2xl tracking-normal">UTC  {getTimezone}</span>
             </div>
             <div className="flex flex-col items-center md:items-start md:px-6 md:w-80">
                 <span className="text-base text-gray-400">Isp</span>
-                {/* <span className="text-2xl tracking-normal leading-normal">{data.isp}</span> */}
                 <span className="text-2xl tracking-normal leading-normal">{isp}</span>
             </div>
         </div>

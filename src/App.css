@@ -22,7 +22,6 @@ body {
 }
 
 .header-wrapper input[type="text"] {
-  /* width: 26em; */
   height: 3em;
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
@@ -46,8 +45,5 @@ input:focus {
 .map-test {
   min-height: calc(100vh - 15em);
   margin-top: 0em;
-  /* position: absolute;  */
   z-index: 0;
-  /* top: 0;
-  left: 0; */
 }

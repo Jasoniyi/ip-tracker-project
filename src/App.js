@@ -20,9 +20,6 @@ const App = () => {
       try {
         const data = await axios.get(`${DEFAULT_URL}?apiKey=${MY_APIKEY}&ipAddress=${address}`)
         const result = data.data
-        // console.log('res2', result)
-        // console.log('lat', result)
-        // console.log('latCheck', lat) 
         setData(result)
         setLat(result.location.lat)
         setLng(result.location.lng)
@@ -41,7 +38,7 @@ const App = () => {
         setData(result)
         setLat(result.location.lat)
         setLng(result.location.lng)
-        console.log('useEff', result.location.lat) 
+        // console.log('useEff', result.location.lat) 
         // console.log('latCheck', lat) 
         // console.log('lngCheck', lng) 
       } catch (err) {
