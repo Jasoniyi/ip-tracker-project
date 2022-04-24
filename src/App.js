@@ -8,6 +8,8 @@ import axios from 'axios'
 
 const App = () => {
   const [data, setData] = useState({});
+  const [lat, setLat ] = useState('');
+  const [lng, setLng ] = useState('');
 
   const DEFAULT_URL = 'https://geo.ipify.org/api/v2/country,city'
   const MY_APIKEY = 'at_LrnFuYIMEWnCWRTQI5g8MzyfLNAL9'
@@ -19,8 +21,11 @@ const App = () => {
         const data = await axios.get(`${DEFAULT_URL}?apiKey=${MY_APIKEY}&ipAddress=${address}`)
         const result = data.data
         // console.log('res2', result)
-        console.log('lat', result)
+        // console.log('lat', result)
+        // console.log('latCheck', lat) 
         setData(result)
+        setLat(result.location.lat)
+        setLng(result.location.lng)
       } catch (err) {
         return err.message
       }
@@ -34,10 +39,11 @@ const App = () => {
         const data = await axios.get(`${DEFAULT_URL}?apiKey=${MY_APIKEY}`)
         const result = data.data
         setData(result)
-        // console.log(result) 
-        // const ipInfo = {
-        //   region: result.location.region
-        // }
+        setLat(result.location.lat)
+        setLng(result.location.lng)
+        console.log('useEff', result.location.lat) 
+        // console.log('latCheck', lat) 
+        // console.log('lngCheck', lng) 
       } catch (err) {
         return err.message
       }
@@ -50,7 +56,7 @@ const App = () => {
       <Header getAddress={getIpAddress} />
       <div className="relative">
         <IpDisplay data={data} />
-        <Map data={data} />
+        <Map lng={lng} lat={lat} />
       </div>
     </div>
   );
